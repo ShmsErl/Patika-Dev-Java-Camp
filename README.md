@@ -33,3 +33,6 @@ Pull requestler kabul edilebilir. Büyük Değişiklikler için, Lütfen önce n
 ### Lİcense
 
 [MIT](https://wwww.google.com)
+
+![Çalışma Resmi](https://raw.githubusercontent.com/Kodluyoruz/taskforce/main/git/odev1/figures/markdown.png)git 
+-----------
