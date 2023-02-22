@@ -36,7 +36,7 @@ package com.listofcreate;
  * listede olup olmadığını söyler. [OK]
  */
 
-public class List<T> implements MyList<T>{
+public class List<T> implements IMyList<T> {
 	private static final int DEFAULT_CAPACITY = 10;
 	private static final Object[] EMPTY_ELEMENTDATA = {};
 	private int initialCapacity;
@@ -167,7 +167,7 @@ public class List<T> implements MyList<T>{
 	 * 
 	 * @param element
 	 */
-
+	@Override
 	public void add(T data) {
 
 		if (size >= this.initialCapacity) {
@@ -193,7 +193,7 @@ public class List<T> implements MyList<T>{
 	 * 
 	 * </blockquote>
 	 */
-
+	@Override
 	public void grow() {
 		T[] tempArray = (T[]) getArray();
 		setArray(new Object[getInitialCapacity() * 2]);
@@ -212,7 +212,7 @@ public class List<T> implements MyList<T>{
 	 * @param index elemanın indis numarasını temsil eder.
 	 * @return T tipinde dizi elemanını geriye döndürür.
 	 */
-
+	@Override
 	public void getIndex(int index) {
 		try {
 			System.out.println(this.array[index]);
@@ -230,7 +230,7 @@ public class List<T> implements MyList<T>{
 	 * @param data  yeni veriyi belirtir.
 	 * @return işlem başarılı ise true, başarısız ise false döndürür.
 	 */
-
+	@Override
 	public boolean setValue(int index, T value) {
 
 		if (index < 0 || index > getInitialCapacity()) {
@@ -260,6 +260,7 @@ public class List<T> implements MyList<T>{
 	 * </pre>
 	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public String toString() {
 		String elementData = "[";
 		for (Object object : this.array) {
@@ -281,7 +282,7 @@ public class List<T> implements MyList<T>{
 	 * @param index silinmek istenen elemanın indis numarasını temsil eder.
 	 * @return true ya da false olarak işlem sonucunu döndürür.
 	 */
-
+	@Override
 	public void remove(T value) {
 
 		for (int i = 0; i < (array.length); i++) {
@@ -318,6 +319,7 @@ public class List<T> implements MyList<T>{
 	 * @param data dizi içerisinde aranacak olan veri, eleman.
 	 * @return ilgili veri dizide varsa onun index numarası, yoksa -1 döner.
 	 */
+	@Override
 	public int indexOf(T data) {
 
 		for (int i = 0; i < this.array.length; i++) {
@@ -383,6 +385,7 @@ public class List<T> implements MyList<T>{
 	 * @return T[] türünde sadece listenin dolu elemanlarını içeren dizi.
 	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public T[] toArray() {
 
 		T[] ts = (T[]) new Object[this.array.length];
@@ -397,6 +400,7 @@ public class List<T> implements MyList<T>{
 	/**
 	 * Listedeki bütün öğeleri siler, bunu diziyi baştan oluşturarak yapar.
 	 */
+	@Override
 	public void clear() {
 
 		for (int i = 0; i < this.array.length; i++) {
@@ -419,6 +423,7 @@ public class List<T> implements MyList<T>{
 	 * @return başlangıç ve bitiş indexleri de dahil olmak üzere arada kalana
 	 *         elemanlardan yeni bir liste oluşturur.
 	 */
+	@Override
 	public List<T> sublist(int start, int finish) {
 
 		List<T> newList = new List<>(finish);
@@ -441,6 +446,7 @@ public class List<T> implements MyList<T>{
 	 * @param data liste içerisinde aranacak veri.
 	 * @return data listede varsa geriye true, listede yoksa false döner.
 	 */
+	@Override
 	public boolean includes(T data) {
 
 		for (Object object : this.array) {
