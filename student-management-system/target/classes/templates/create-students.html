@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>List Students</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Create Students</h1>
+		</div>
+		<form th:action="@{/api/students/add}"
+			th:object="${createStudentRequest}" method="POST">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label> <input
+					type="email" name="email" th:field="*{email}" class="form-control"
+					id="exampleInputEmail1" aria-describedby="emailHelp"
+					placeholder="Enter email">
+					<p th:if="${#fields.hasErrors('email')}" th:errorclass="error"
+					th:errors="*{email}" />
+
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">First Name </label> <input
+					type="text" name="name" th:field="*{name}" class="form-control"
+					placeholder="Enter name">
+				<p th:if="${#fields.hasErrors('name')}" th:errorclass="error"
+					th:errors="*{name}" />
+				<span th:if="${err}"  th:text="${err}">Error</span>
+			</div>
+
+
+
+			<div class="form-group">
+				<label for="exampleInputPassword1">Last Name</label> <input
+					type="text" name="lastName" th:field="*{lastName}"
+					class="form-control" id="exampleInputPassword1"
+					placeholder="enter lastname">
+					<p th:if="${#fields.hasErrors('lastName')}" th:errorclass="error"
+					th:errors="*{lastName}" />
+					
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+				<label class="form-check-label" for="exampleCheck1">Check me
+					out</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+
+	</div>
+
+</body>
+</html>
